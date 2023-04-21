@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : AppCompatActivity() {
     private lateinit var text1 : TextView
@@ -33,7 +35,9 @@ class MainActivity : AppCompatActivity() {
 
 //            KIRIM DATA DENGAN DATA CLASS
             intentDestination.putExtra(Main2Activity.EXTRA_DATA, Student("ISRO", "111111"))
-            startActivity(intentDestination)
+//            startActivity(intentDestination)
+
+            resultLauncher.launch(intentDestination)
         }
 
 //        - IMPLICIT INTENT
@@ -44,4 +48,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intentPhone)
         }
     }
+
+    private val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        result -> if (result.resultCode==Main2Activity.RESULT_CODE && result.data!=null){
+            val name = result.data?.getStringExtra(Main2Activity.EXTRA_RETURN_VALUE)
+            Toast.makeText(applicationContext, name, Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }
