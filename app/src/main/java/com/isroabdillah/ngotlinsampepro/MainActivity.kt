@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity() {
         btn1.setOnClickListener{
 //            open MAINACTVTY
             val intentDestination = Intent(this@MainActivity, Main2Activity::class.java)
-            intentDestination.putExtra(Main2Activity.EXTRA_DATA, "Santai dulu mas broo")
+//            intentDestination.putExtra(Main2Activity.EXTRA_DATA, "Santai dulu mas broo")
+
+//            KIRIM DATA DENGAN DATA CLASS
+            intentDestination.putExtra(Main2Activity.EXTRA_DATA, Student("ISRO", "111111"))
             startActivity(intentDestination)
         }
     }
