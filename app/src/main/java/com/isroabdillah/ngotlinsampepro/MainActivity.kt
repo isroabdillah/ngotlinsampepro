@@ -1,5 +1,6 @@
 package com.isroabdillah.ngotlinsampepro
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -18,5 +19,15 @@ class MainActivity : AppCompatActivity() {
 
 //        manipulasi text
         text1.text ="Hello mas bro"
+
+
+//        2 INTENT
+//        - EXPLICIT INTENT
+        btn1.setOnClickListener{
+//            open MAINACTVTY
+            val intentDestination = Intent(this@MainActivity, Main2Activity::class.java)
+            intentDestination.putExtra(Main2Activity.EXTRA_DATA, "Santai dulu mas broo")
+            startActivity(intentDestination)
+        }
     }
 }
